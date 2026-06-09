@@ -5,9 +5,6 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: fit4110-api-lab05
-    env_file:
-      - path: .env
-        required: false
     environment:
       APP_HOST: 0.0.0.0
       APP_PORT: 8000

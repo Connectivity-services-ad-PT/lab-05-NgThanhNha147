@@ -6,15 +6,14 @@ install:
 
 # Lint OpenAPI contracts with Spectral
 lint:
-	npx spectral lint contracts/*.yaml
+	npm run lint
 
-# Build Docker image for API only
+# Build all images used by the Compose stack
 build:
-	docker build -t fit4110/iot-ingestion:v0.1.0-team-iot .
+	docker compose build
 
-# Run API container standalone (not via compose)
-run:
-	docker run --rm --name fit4110-api-lab05 -p 8000:8000 --env-file .env.example fit4110/iot-ingestion:v0.1.0-team-iot
+# Run the full stack. The API depends on DB and AI, so standalone API mode is not used.
+run: compose-up
 
 # Compose commands
 compose-up:
