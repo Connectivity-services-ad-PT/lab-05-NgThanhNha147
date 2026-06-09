@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="FIT4110 Lab05 IoT Compose" tests="8" time="0.178">
+  <testsuite name="00_Readiness / GET /health - API is ready with DB and AI" id="b15f6f55-56dd-461b-8395-2499acaff075" timestamp="2026-06-09T02:16:11.747Z" tests="2" failures="0" errors="0" time="0.063">
+    <testcase name="API health returns 200" time="0.063" classname="00ReadinessGetHealthApiIsReadyWithDbAndAi"/>
+    <testcase name="DB and AI dependencies are ready" time="0.063" classname="00ReadinessGetHealthApiIsReadyWithDbAndAi"/>
+  </testsuite>
+  <testsuite name="00_Readiness / GET /health - AI service is ready" id="87eb39e1-309e-4c7c-85b1-08cd4be47623" timestamp="2026-06-09T02:16:11.747Z" tests="2" failures="0" errors="0" time="0.008">
+    <testcase name="AI health returns 200" time="0.008" classname="00ReadinessGetHealthAiServiceIsReady"/>
+    <testcase name="AI service reports ok" time="0.008" classname="00ReadinessGetHealthAiServiceIsReady"/>
+  </testsuite>
+  <testsuite name="00_Readiness / POST /predict - AI service returns a dummy prediction" id="ffb2bce6-0797-45a6-aed2-49c0e62463f2" timestamp="2026-06-09T02:16:11.747Z" tests="2" failures="0" errors="0" time="0.005">
+    <testcase name="AI predict returns 200" time="0.005" classname="00ReadinessPostPredictAiServiceReturnsADummyPrediction"/>
+    <testcase name="AI predict returns objects and confidence" time="0.005" classname="00ReadinessPostPredictAiServiceReturnsADummyPrediction"/>
+  </testsuite>
+  <testsuite name="01_Readings / POST /readings - creates a temperature reading" id="e9c25e21-38c7-4f5a-a069-92fe7ce1a79b" timestamp="2026-06-09T02:16:11.747Z" tests="2" failures="0" errors="0" time="0.046">
+    <testcase name="Reading is created" time="0.046" classname="01ReadingsPostReadingsCreatesATemperatureReading"/>
+    <testcase name="Response contains reading id" time="0.046" classname="01ReadingsPostReadingsCreatesATemperatureReading"/>
+  </testsuite>
+  <testsuite name="01_Readings / GET /readings/latest - returns stored readings" id="64cd0e5a-37c2-4a28-85fa-c53e839c5e5a" timestamp="2026-06-09T02:16:11.747Z" tests="2" failures="0" errors="0" time="0.020">
+    <testcase name="Latest readings returns 200" time="0.020" classname="01ReadingsGetReadingsLatestReturnsStoredReadings"/>
+    <testcase name="Latest readings include items" time="0.020" classname="01ReadingsGetReadingsLatestReturnsStoredReadings"/>
+  </testsuite>
+  <testsuite name="01_Readings / GET /readings/{reading_id} - returns created reading" id="dc53f4ea-0d22-43fa-abe4-21dbc950b95c" timestamp="2026-06-09T02:16:11.747Z" tests="2" failures="0" errors="0" time="0.026">
+    <testcase name="Reading detail returns 200" time="0.026" classname="01ReadingsGetReadingsReadingIdReturnsCreatedReading"/>
+    <testcase name="Reading detail matches created id" time="0.026" classname="01ReadingsGetReadingsReadingIdReturnsCreatedReading"/>
+  </testsuite>
+  <testsuite name="02_Negative / POST /readings - missing token is rejected" id="38939044-6cfb-43c6-8a8f-1b0329bbf66e" timestamp="2026-06-09T02:16:11.747Z" tests="2" failures="0" errors="0" time="0.006">
+    <testcase name="Missing token returns 401" time="0.006" classname="02NegativePostReadingsMissingTokenIsRejected"/>
+    <testcase name="Problem details are returned" time="0.006" classname="02NegativePostReadingsMissingTokenIsRejected"/>
+  </testsuite>
+  <testsuite name="02_Negative / POST /readings - value above max is rejected" id="5bfb81a6-8ac5-4a3e-8d10-7145a43150db" timestamp="2026-06-09T02:16:11.747Z" tests="2" failures="0" errors="0" time="0.004">
+    <testcase name="Invalid reading returns 422" time="0.004" classname="02NegativePostReadingsValueAboveMaxIsRejected"/>
+    <testcase name="Validation problem details are returned" time="0.004" classname="02NegativePostReadingsValueAboveMaxIsRejected"/>
+  </testsuite>
+</testsuites>

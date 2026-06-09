@@ -1,7 +1,9 @@
 openapi: 3.1.0
 info:
   title: FIT4110 Lab 05 - IoT Ingestion API
-  version: 0.5.0
+  version: v0.1.0-team-iot
+  contact:
+    name: NgThanhNha147
   description: |
     Contract dùng cho Lab 05 Docker Compose readiness, kế thừa logic của Lab 03/04.
     Payload chính dùng các trường device_id, metric, value, unit và timestamp.
@@ -40,7 +42,16 @@ paths:
                   value:
                     status: ok
                     service: iot-ingestion
-                    version: 0.5.0
+                    version: v0.1.0-team-iot
+                    dependencies:
+                      database: ok
+                      ai: ok
+        "503":
+          description: Service chÆ°a sáºµn sÃ ng vÃ¬ DB hoáº·c AI chÆ°a ready
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthResponse"
 
   /readings:
     post:
@@ -190,6 +201,7 @@ paths:
     get:
       tags: [readings]
       operationId: getReadingById
+      description: Return one persisted sensor reading from PostgreSQL by reading id.
       summary: Lấy chi tiết một bản ghi cảm biến
       parameters:
         - name: reading_id
@@ -320,14 +332,21 @@ components:
       properties:
         status:
           type: string
-          enum: [ok]
+          enum: [ok, degraded]
           example: ok
         service:
           type: string
           example: iot-ingestion
         version:
           type: string
-          example: 0.5.0
+          example: v0.1.0-team-iot
+        dependencies:
+          type: object
+          additionalProperties:
+            type: string
+          example:
+            database: ok
+            ai: ok
 
     ProblemDetails:
       type: object
